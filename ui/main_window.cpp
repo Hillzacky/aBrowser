@@ -4,6 +4,8 @@
 #include <QtWidgets/QMessageBox>
 #include <include/cef_app.h>
 #include <include/cef_browser.h>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 MainWindow::MainWindow(const Settings &settings, QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow), settings_(settings) {
@@ -55,11 +57,77 @@ void MainWindow::on_lineEditURL_returnPressed() {
   }
 }
 
+void MainWindow::loadURLFromAPI(const QString &url) {
+  if (CefRefPtr<CefBrowser> browser = getCurrentBrowser()) {
+    browser->GetHost()->LoadURL(url.toStdString());
+  }
+}
+
+void MainWindow::goBackFromAPI() {
+  if (CefRefPtr<CefBrowser> browser = getCurrentBrowser()) {
+    browser->GetHost()->GoBack();
+  }
+}
+
+void MainWindow::goForwardFromAPI() {
+  if (CefRefPtr<CefBrowser> browser = getCurrentBrowser()) {
+    browser->GetHost()->GoForward();
+  }
+}
+
+void MainWindow::reloadFromAPI() {
+  if (CefRefPtr<CefBrowser> browser = getCurrentBrowser()) {
+    browser->GetHost()->Reload();
+  }
+}
+
+void MainWindow::executeJSFromAPI(const QString &code) {
+  if (CefRefPtr<CefBrowser> browser = getCurrentBrowser()) {
+    browser->GetMainFrame()->ExecuteJavaScript(code.toStdString(), "", 0);
+  }
+}
+
+QString MainWindow::getHTMLFromAPI() {
+  if (CefRefPtr<CefBrowser> browser = getCurrentBrowser()) {
+    // Implementasikan pengambilan HTML (misalnya, menggunakan CefGetSourceVisitor)
+    return QString(); // Placeholder
+  }
+  return QString();
+}
+
+QString MainWindow::getURLFromAPI() {
+  if (CefRefPtr<CefBrowser> browser = getCurrentBrowser()) {
+    return QString::fromStdString(browser->GetMainFrame()->GetURL());
+  }
+  return QString();
+}
+
+QString MainWindow::getCookiesFromAPI() {
+  if (CefRefPtr<CefBrowser> browser = getCurrentBrowser()) {
+    // Implementasikan pengambilan cookie (misalnya, menggunakan CefCookieVisitor)
+    return QString(); // Placeholder
+  }
+  return QString();
+}
+
+void MainWindow::setProxyFromAPI(const QString &proxy) {
+  // Implementasikan pengaturan proxy
+}
+
+void MainWindow::setSettingsFromAPI(const QString &settingsJSON) {
+  QJsonDocument doc = QJsonDocument::fromJson(settingsJSON.toUtf8());
+  if (!doc.isNull()) {
+    QJsonObject obj = doc.object();
+    // Implementasikan pengaturan dari JSON
+  }
+}
+
 CefRefPtr<CefBrowser> MainWindow::getCurrentBrowser() {
   if (tabWidget_->count() > 0) {
-    // Implementasikan logika untuk mendapatkan CefBrowser dari tab saat ini
-    // Misalnya, simpan pointer CefBrowser di setiap tab
-    // ...
+    QWidget *currentTab = tabWidget_->currentWidget();
+    // Implementasikan pencarian CefBrowser dari QWidget tab
+    // Misalnya, simpan pointer CefBrowser di QWidget tab
+    return nullptr; // Placeholder
   }
   return nullptr;
 }
