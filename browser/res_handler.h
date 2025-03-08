@@ -25,4 +25,4 @@ private:
   int offset_;
 };
 
-#endif // RES_HANDLER_H
+#endif
