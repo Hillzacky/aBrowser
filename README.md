@@ -19,7 +19,7 @@ Berikut adalah langkah-langkah untuk membangun aBrowser menggunakan CMake:
  * Compiler C++ (GCC, Clang, MSVC)
 #### Langkah-langkah Build
  * Unduh dan Instal CEF:
-   * Unduh distribusi biner CEF dari website resmi.
+   * Unduh distribusi biner CEF [disini](https://cef-builds.spotifycdn.com/index.html).
    * Ekstrak arsip ke direktori yang diinginkan (misalnya, ~/cef).
  * Konfigurasi CMake:
    * Buat direktori build di dalam direktori proyek Anda (misalnya, build).
