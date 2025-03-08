@@ -1,5 +1,5 @@
 #include "api.h"
-#include "../ui/main_window.h" // Perlu akses ke MainWindow
+#include "../ui/main_window.h"
 #include <QApplication>
 #include <QMetaObject>
 #include <QJsonDocument>
@@ -59,4 +59,9 @@ void BrowserAPI::setProxy(const std::string &proxy) {
 void BrowserAPI::setSettings(const std::string &settingsJSON) {
   QMetaObject::invokeMethod(QApplication::instance()->topLevelWidgets().at(0),
                             "setSettingsFromAPI", Q_ARG(QString, QString::fromStdString(settingsJSON)));
+}
+
+void BrowserAPI::takeScreenshot(const std::string &filePath) {
+  QMetaObject::invokeMethod(QApplication::instance()->topLevelWidgets().at(0),
+                            "takeScreenshotFromAPI", Q_ARG(QString, QString::fromStdString(filePath)));
 }
