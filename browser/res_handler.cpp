@@ -1,28 +1,41 @@
-#ifndef RES_HANDLER_H
-#define RES_HANDLER_H
+#include "res_handler.h"
 
-#include <include/cef_app.h>
-#include <include/cef_resource_handler.h>
+ResHandler::ResHandler(const std::string &mimeType, const std::string &data)
+    : mimeType_(mimeType), data_(data), offset_(0) {}
 
-class ResHandler : public CefResourceHandler {
-public:
-  ResHandler(const std::string &mimeType, const std::string &data);
-  ~ResHandler();
+ResHandler::~ResHandler() {}
 
-  bool Open(CefRefPtr<CefRequest> request, bool &handle_request,
-            CefRefPtr<CefCallback> callback) override;
-  bool Skip(int64 bytes_to_skip, int64 &bytes_skipped,
-            CefRefPtr<CefResourceHandler::Callback> callback) override;
-  bool Read(void *data_out, int bytes_to_read, int &bytes_read,
-            CefRefPtr<CefResourceHandler::Callback> callback) override;
-  void Cancel() override;
-  void GetResponseHeaders(CefRefPtr<CefResponse> response, int64 &response_length,
-                           CefString &redirectUrl) override;
+bool ResHandler::Open(CefRefPtr<CefRequest> request, bool &handle_request,
+                      CefRefPtr<CefCallback> callback) {
+  handle_request = true;
+  return true;
+}
 
-private:
-  std::string mimeType_;
-  std::string data_;
-  int offset_;
-};
+bool ResHandler::Skip(int64 bytes_to_skip, int64 &bytes_skipped,
+                      CefRefPtr<CefResourceHandler::Callback> callback) {
+  int64 available = data_.length() - offset_;
+  bytes_skipped = std::min(bytes_to_skip, available);
+  offset_ += bytes_skipped;
+  return true;
+}
 
-#endif
+bool ResHandler::Read(void *data_out, int bytes_to_read, int &bytes_read,
+                      CefRefPtr<CefResourceHandler::Callback> callback) {
+  int64 available = data_.length() - offset_;
+  bytes_read = std::min(bytes_to_read, static_cast<int>(available));
+  if (bytes_read > 0) {
+    memcpy(data_out, data_.c_str() + offset_, bytes_read);
+    offset_ += bytes_read;
+    return true;
+  }
+  return false;
+}
+
+void ResHandler::Cancel() {}
+
+void ResHandler::GetResponseHeaders(CefRefPtr<CefResponse> response,
+                                     int64 &response_length,
+                                     CefString &redirectUrl) {
+  response->SetMimeType(mimeType_);
+  response_length = data_.length();
+}
