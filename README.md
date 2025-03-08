@@ -1,5 +1,5 @@
 # aBrowser
-aBrowser adalah peramban web yang berfokus pada privasi dan keamanan. Peramban ini dirancang untuk mencegah pelacakan online dan fingerprinting.
+**aBrowser** adalah peramban web yang berfokus pada privasi dan keamanan. Peramban ini dirancang untuk mencegah pelacakan online dan fingerprinting.
 ### Fitur
  * Spoofing canvas, WebGL, navigator, zona waktu, geolocation, perangkat media, layar, baterai, font, dan plugin.
  * Pengaturan proksi.
@@ -23,19 +23,19 @@ Berikut adalah langkah-langkah untuk membangun aBrowser menggunakan CMake:
    * Ekstrak arsip ke direktori yang diinginkan (misalnya, ~/cef).
  * Konfigurasi CMake:
    * Buat direktori build di dalam direktori proyek Anda (misalnya, build).
-   * Buka terminal dan navigasikan ke direktori build.
-   * Jalankan perintah CMake berikut:
+   _Buka terminal dan navigasikan ke direktori build._
+   Jalankan perintah CMake berikut:
 ```bash
 cmake -DCEF_ROOT=~/cef -DCMAKE_PREFIX_PATH=/path/to/Qt ~/aBrowser
 ```
-   * Ganti ~/cef dengan jalur ke direktori CEF Anda dan /path/to/Qt dengan jalur ke instalasi Qt Anda.
- * Build Proyek:
-   * Setelah konfigurasi CMake berhasil, jalankan perintah build berikut:
+   _Ganti ~/cef dengan jalur ke direktori CEF Anda dan /path/to/Qt dengan jalur ke instalasi Qt Anda._
+ ###### Build Proyek:
+   Setelah konfigurasi CMake berhasil, jalankan perintah build berikut:
 ```bash
 cmake --build .
 ```
 
-   * Ini akan membangun executable aBrowser.
+   _Ini akan membangun executable aBrowser._
 #### Menjalankan Aplikasi:
    Setelah proses build selesai, executable aBrowser akan berada pada folder build. Jalankan executable tersebut untuk menjalankan aplikasi.
 ##### Catatan
@@ -71,4 +71,4 @@ aBrowser menyediakan API untuk kontrol eksternal melalui antarmuka baris perinta
 ### Kontribusi
 Kontribusi dipersilakan! Silakan kirim pull request atau laporkan masalah di GitHub.
 ### Lisensi
-Proyek ini dilisensikan di bawah Lisensi MIT.
+Proyek ini dilisensikan di bawah Lisensi [MIT](https://github.com/Hillzacky/aBrowser/blob/main/LICENSE).
