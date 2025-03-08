@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
 
   // Atur direktori cache CEF
   CefSettings cefSettings;
-  QString cachePath = QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/AntiDetectionBrowser";
+  QString cachePath = QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/aBrowser";
   QDir dir(cachePath);
   if (!dir.exists()) {
     dir.mkpath(".");
