@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(AntiDetectionBrowser)
+project(aBrowser)
 set(CMAKE_CXX_STANDARD 17)
 find_package(Qt5Widgets REQUIRED)
 find_package(CEF REQUIRED)
