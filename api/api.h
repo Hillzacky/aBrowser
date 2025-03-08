@@ -15,6 +15,7 @@ public:
   static std::string getCookies();
   static void setProxy(const std::string &proxy);
   static void setSettings(const std::string &settingsJSON);
+  static void takeScreenshot(const std::string &filePath); // Tambahkan fungsi screenshot
 };
 
 #endif
