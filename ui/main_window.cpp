@@ -17,14 +17,7 @@
 MainWindow::MainWindow(const Settings &settings, QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow), settings_(settings) {
   ui->setupUi(this);
-  tabWidget_ = ui->tabWidget;
-  lineEditURL_ = ui->lineEditURL;
-
-  connect(ui->actionNewTab, &QAction::triggered, this, &MainWindow::on_actionNewTab_triggered);
-  connect(ui->actionCloseTab, &QAction::triggered, this, &MainWindow::on_actionCloseTab_triggered);
-  connect(ui->actionExit, &QAction::triggered, this, &MainWindow::on_actionExit_triggered);
-  connect(lineEditURL_, &QLineEdit::returnPressed, this, &MainWindow::on_lineEditURL_returnPressed);
-	 setupUI();
+  setupUI();
   on_actionNewTab_triggered(); // Buka tab awal
 }
 
