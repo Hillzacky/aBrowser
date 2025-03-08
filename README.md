@@ -23,12 +23,12 @@ Berikut adalah langkah-langkah untuk membangun aBrowser menggunakan CMake:
    * Ekstrak arsip ke direktori yang diinginkan (misalnya, ~/cef).
  * Konfigurasi CMake:
    * Buat direktori build di dalam direktori proyek Anda (misalnya, build).
-   _Buka terminal dan navigasikan ke direktori build._
-   Jalankan perintah CMake berikut:
+_Buka terminal dan navigasikan ke direktori build._
+Jalankan perintah CMake berikut:
 ```bash
 cmake -DCEF_ROOT=~/cef -DCMAKE_PREFIX_PATH=/path/to/Qt ~/aBrowser
 ```
-   _Ganti ~/cef dengan jalur ke direktori CEF Anda dan /path/to/Qt dengan jalur ke instalasi Qt Anda._
+   Ganti ~/cef dengan jalur ke direktori CEF Anda dan /path/to/Qt dengan jalur ke instalasi Qt Anda.
  ###### Build Proyek:
    Setelah konfigurasi CMake berhasil, jalankan perintah build berikut:
 ```bash
