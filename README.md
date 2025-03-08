@@ -41,10 +41,10 @@ cmake --build .
 ##### Catatan
  * Pastikan variabel lingkungan PATH Anda menyertakan direktori yang berisi executable Qt dan CEF.
  * Jika Anda mengalami masalah build, periksa log CMake dan pastikan semua prasyarat telah terpenuhi.
-Instalasi
+#### Instalasi
  * Setelah build berhasil, salin file executable ke direktori yang diinginkan.
  * (Opsional) Tambahkan direktori ke PATH sistem Anda.
-Cara Penggunaan
+#### Cara Penggunaan
  * Jalankan file executable aBrowser.
  * Masukkan URL di bilah alamat dan tekan Enter.
  * Gunakan menu dan toolbar untuk mengakses berbagai fitur.
