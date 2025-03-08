@@ -36,9 +36,9 @@ cmake --build .
 ```
 
    * Ini akan membangun executable aBrowser.
- * Menjalankan Aplikasi:
-   * Setelah proses build selesai, executable aBrowser akan berada pada folder build. Jalankan executable tersebut untuk menjalankan aplikasi.
-Catatan Penting
+#### Menjalankan Aplikasi:
+   Setelah proses build selesai, executable aBrowser akan berada pada folder build. Jalankan executable tersebut untuk menjalankan aplikasi.
+##### Catatan
  * Pastikan variabel lingkungan PATH Anda menyertakan direktori yang berisi executable Qt dan CEF.
  * Jika Anda mengalami masalah build, periksa log CMake dan pastikan semua prasyarat telah terpenuhi.
 Instalasi
